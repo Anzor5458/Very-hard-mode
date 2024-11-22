@@ -5,7 +5,7 @@ require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game).caption("
 wait(3)
 require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game).caption("l'm gay",true)
 
--- froger 
+-- Galena 
 coroutine.wrap(function()
     while true do
         wait(math.random(30,80))
@@ -17,8 +17,8 @@ local spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/Regul
 
 local entity = spawner.Create({
 	Entity = {
-		Name = "froger",
-		Asset = "https://github.com/Anzor5458/Froger/blob/main/Pressure",
+		Name = "Galena",
+		Asset = "https://github.com/Anzor5458/Galens/raw/refs/heads/main/Galena.rbxm",
 		HeightOffset = 0
 	},
 	Lights = {
