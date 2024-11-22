@@ -1,0 +1,529 @@
+require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game).caption("Made by Anzor5458",true)
+game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+wait(1)
+require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game).caption("very hard mode",true)
+wait(3)
+require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game).caption("l'm gay",true)
+
+-- froger 
+coroutine.wrap(function()
+    while true do
+        wait(math.random(30,80))
+        game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+        wait(5)
+local spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Entity%20Spawner/V2/Source.lua"))()
+
+---====== Create entity ======---
+
+local entity = spawner.Create({
+	Entity = {
+		Name = "froger",
+		Asset = "https://github.com/Anzor5458/Froger/blob/main/Pressure",
+		HeightOffset = 0
+	},
+	Lights = {
+		Flicker = {
+			Enabled = true,
+			Duration = 1
+		},
+		Shatter = true,
+		Repair = false
+	},
+	Earthquake = {
+		Enabled = true
+	},
+	CameraShake = {
+		Enabled = true,
+		Range = 100,
+		Values = {1.5, 20, 0.1, 1} -- Magnitude, Roughness, FadeIn, FadeOut
+	},
+	Movement = {
+		Speed = 100,
+		Delay = 2,
+		Reversed = false
+	},
+	Rebounding = {
+		Enabled = true,
+		Type = "Ambush", -- "Blitz"
+		Min = 1,
+		Max = 1,
+		Delay = 2
+	},
+	Damage = {
+		Enabled = true,
+		Range = 40,
+		Amount = 125
+	},
+	Crucifixion = {
+		Enabled = true,
+		Range = 40,
+		Resist = false,
+		Break = true
+	},
+	Death = {
+		Type = "Guiding", -- "Curious"
+		Hints = {"Death", "Hints", "Go", "Here"},
+		Cause = ""
+	}
+})
+
+---====== Debug entity ======---
+
+entity:SetCallback("OnSpawned", function()
+    print("Entity has spawned")
+end)
+
+entity:SetCallback("OnStartMoving", function()
+    print("Entity has started moving")
+end)
+
+entity:SetCallback("OnEnterRoom", function(room, firstTime)
+    if firstTime == true then
+        print("Entity has entered room: ".. room.Name.. " for the first time")
+    else
+        print("Entity has entered room: ".. room.Name.. " again")
+    end
+end)
+
+entity:SetCallback("OnLookAt", function(lineOfSight)
+	if lineOfSight == true then
+		print("Player is looking at entity")
+	else
+		print("Player view is obstructed by something")
+	end
+end)
+
+entity:SetCallback("OnRebounding", function(startOfRebound)
+    if startOfRebound == true then
+        print("Entity has started rebounding")
+	else
+        print("Entity has finished rebounding")
+	end
+end)
+
+entity:SetCallback("OnDespawning", function()
+    print("Entity is despawning")
+end)
+
+entity:SetCallback("OnDespawned", function()
+    print("Entity has despawned")
+end)
+
+entity:SetCallback("OnDamagePlayer", function(newHealth)
+	if newHealth == 0 then
+		print("Entity has killed the player")
+	else
+		print("Entity has damaged the player")
+	end
+end)
+
+--[[
+
+DEVELOPER NOTE:
+By overwriting 'CrucifixionOverwrite' the default crucifixion callback will be replaced with your custom callback.
+
+entity:SetCallback("CrucifixionOverwrite", function()
+    print("Custom crucifixion callback")
+end)
+
+]]--
+
+---====== Run entity ======---
+
+entity:Run()
+    end
+end)()
+
+-- galena
+
+coroutine.wrap(function()
+ 
+game.ReplicatedStorage.GameData.LatestRoom.Changed:Connect(function()
+ 
+if game.ReplicatedStorage.GameData.LatestRoom.Value == 60 then
+
+game.Lighting.MainColorCorrection.TintColor = Color3.fromRGB(190, 0, 0)
+game.Lighting.MainColorCorrection.Contrast = 0.3
+local tween = game:GetService("TweenService")
+tween:Create(game.Lighting.MainColorCorrection, TweenInfo.new(10), {Contrast = 0}):Play()
+local TweenService = game:GetService("TweenService")
+local TW = TweenService:Create(game.Lighting.MainColorCorrection, TweenInfo.new(12),{TintColor = Color3.fromRGB(255, 255, 255)})
+TW:Play()
+local CameraShaker = require(game.ReplicatedStorage.CameraShaker)
+local camara = game.Workspace.CurrentCamera
+local camShake = CameraShaker.new(Enum.RenderPriority.Camera.Value, function(shakeCf)
+	camara.CFrame = camara.CFrame * shakeCf
+end)
+camShake:Start()
+camShake:ShakeOnce(4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4)
+
+local Overseer = Instance.new("Model")
+Overseer.Parent = workspace
+Overseer.Name = "galena"
+local v = game.Players.LocalPlayer
+local enableDamage = true
+local no = false
+local damage1 = Instance.new("Sound")
+damage1.SoundId = "rbxassetid://5507830449"
+damage1.Pitch = 1.2
+damage1.Volume = 0.7
+local damage2 = Instance.new("Sound")
+damage2.SoundId = "rbxassetid://5507830815"
+damage2.Pitch = 1.2
+damage2.Volume = 0.7
+local damage3 = Instance.new("Sound")
+damage3.SoundId = "rbxassetid://5507829691"
+damage3.Pitch = 1.2
+damage3.Volume = 0.7
+
+local CameraShaker = require(game.ReplicatedStorage.CameraShaker)
+local camara = game.Workspace.CurrentCamera
+local camShake = CameraShaker.new(Enum.RenderPriority.Camera.Value, function(shakeCf)
+	camara.CFrame = camara.CFrame * shakeCf
+end)
+ 
+local currentLoadedRoom=workspace.CurrentRooms[game:GetService("ReplicatedStorage").GameData.LatestRoom.Value]
+local eyes=game:GetObjects("https://github.com/Anzor5458/Galens/raw/refs/heads/main/Galena.rbxm)[1]
+ 
+if eyes then end
+game.Workspace.CurrentRooms.ChildAdded:Connect(function()
+    Overseer:Destroy()
+    enableDamage = false
+end)
+local num=0
+
+if currentLoadedRoom:FindFirstChild("Nodes") then
+   num = math.floor(#currentLoadedRoom.Nodes:GetChildren()/2)
+end
+
+eyes.CFrame=(
+	num==0 and currentLoadedRoom[currentLoadedRoom.Name] or currentLoadedRoom.Nodes[num]
+).CFrame+Vector3.new(0,5,0)
+ 
+eyes.Parent=Overseer
+damage1.Parent=Overseer
+damage2.Parent=Overseer
+damage3.Parent=Overseer
+local mom = {damage1, damage2, damage3}
+
+if game.Players.LocalPlayer.Character.Humanoid.Health<=0 then
+   no = true
+end
+ 
+local hum=game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
+while true and enableDamage do
+if not Overseer then break end
+	local _,found=workspace.CurrentCamera:WorldToScreenPoint(eyes.Position)
+	if not found then
+	if v.Character ~= nil and not v.Character:GetAttribute("Hiding") then
+if workspace.CurrentRooms:FindFirstChild("51") or workspace:FindFirstChild("SeekMoving")  then
+return
+end
+
+camShake:Start()
+camShake:ShakeOnce(5, 15, 0.1, 1)
+		hum.Health-=3
+          if no == false then
+		mom[math.random(1, #mom)]:Play()
+          end
+		if hum.Health<=0 then
+		if no == false then
+			game:GetService("ReplicatedStorage").GameStats["Player_".. game.Players.LocalPlayer.Name].Total.DeathCause.Value = "Overseer Eyes"
+			no = true
+			wait(1.8)
+			loadstring(game:HttpGet("https://raw.githubusercontent.com/check78/GuidingLight/main/SeerDie.txt"))()
+		end
+		end
+	end
+	end
+	task.wait(0.5)
+end
+
+end
+
+end)
+
+end)()
+
+--
+
+-- release screech
+
+game.ReplicatedStorage.Entities.Screech.Top.Eyes.Color = Color3.fromRGB(255, 255, 0)
+game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game.RemoteListener.Modules.Screech.Caught.SoundId = "rbxassetid://7492033495"
+game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game.RemoteListener.Modules.Screech.Caught.PlaybackSpeed = 1.6
+game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game.RemoteListener.Modules.Screech.Attack.SoundId = "rbxassetid://8080941676"
+
+if game:GetService("ReplicatedStorage").GameData.Floor.Value == "Fools" then
+
+game.ReplicatedStorage.Entities.Screech.Top.Eyes.Color = Color3.fromRGB(255, 255, 0)
+game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game.RemoteListener.Modules.Screech.Attack.SoundId = "rbxassetid://8080941676"
+
+--[[ ]]--
+
+end
+
+-- horror sound (playing for games)
+
+game:GetService("SoundService", Workspace)
+local horror_sound = Instance.new("Sound", Workspace)
+ horror_sound.SoundId = "rbxassetid://9114625745"
+ horror_sound.Volume = 1
+ horror_sound.Looped = true
+ horror_sound:Play()
+
+-- painting flowers
+
+coroutine.wrap(function()
+ 
+if game:GetService("ReplicatedStorage").GameData.Floor.Value == "Hotel" then
+ 
+game.ReplicatedStorage.GameData.LatestRoom.Changed:Connect(function()
+ 
+for _, v in next, game.Workspace.CurrentRooms[game.ReplicatedStorage.GameData.LatestRoom.Value].Assets:GetDescendants() do
+ 
+    if v.Name == "Painting_VeryBig" then
+ 
+local paintingchance = math.random(3, 30)
+ 
+if paintingchance == 3 then
+ 
+        local a = v:Clone()
+ 
+              a.Parent = v.Parent
+ 
+              a.Canvas.SurfaceGui.ImageLabel.Image = "rbxassetid://0"
+ 
+              a.Canvas.SurfaceGui.ImageLabel.BackgroundTransparency = 1
+ 
+              a.Canvas.SurfaceGui.ImageLabel.BackgroundColor3 = Color3.fromRGB(159, 159, 159)
+ 
+              a.Canvas.SurfaceGui.ImageLabel.ImageTransparency = 0.5
+ 
+              a.Name = "Painting Easter Egg"
+ 
+              local b = a.InteractPrompt
+ 
+b.Triggered:Connect(function()
+ 
+require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game).caption('This painting is titled "The hour of joy" & looks beautiful & no image!',true)
+
+function PaintImage(medialink, filename)
+
+local url = medialink
+
+local FileName = filename
+
+if not isfile(FileName..".jpg") then
+ 
+writefile(FileName..".jpg", game:HttpGet(url))
+
+end
+
+return (getcustomasset or getsynasset)(FileName..".jpg")
+
+end
+
+function CustomPaintImage(medialink, filename)
+
+local PaintImagine = Instance.new("ImageLabel")
+
+PaintImagine.Image = PaintImage(medialink, filename)
+
+PaintImagine.Parent = ImageLabel
+
+end
+
+CustomPaintImage("https://cdn.discordapp.com/attachments/1275939865023746140/1275939865435045929/2024082116035755.jpg?ex=66eaa6d9&is=66e95559&hm=3959e3c5f3679da8a4d73a98997771f0728dadcbd1bb57b285428e63fde262b5&", "PaintImagine")
+ 
+end)
+ 
+        v:Destroy()
+ 
+end
+ 
+    end
+ 
+ 
+ 
+end
+ 
+end)
+
+--[[ ]]--
+
+end
+
+end)()
+
+--
+
+-- custom door sounds
+
+loadstring(game:HttpGet("https://pastebin.com/raw/gxKdB7VD"))()
+
+game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+
+require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game).caption("Script sync'd according started room, have fun!",true)
+
+game.TextChatService.TextChannels.RBXSystem:DisplaySystemMessage("Forgotten Mode has been updated (version v2.5)")
+
+-- timothy new jumpscare sound
+
+game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game.RemoteListener.Modules.SpiderJumpscare.Scare.SoundId = "rbxassetid://8080941676"
+
+-- hide monster release scare
+
+game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game.RemoteListener.Modules.HideMonster.Scare.SoundId = "rbxassetid://9126213741"
+
+-- goofy darkness
+
+game.Workspace.Ambience_Dark.SoundId = "rbxassetid://6535784827"
+game.Workspace.Ambience_Dark.PlaybackSpeed = 1
+
+-- WOW
+
+game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game.Health.Death.SoundId = "rbxassetid://16929745437", "DeathNew"
+game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game.Health.Death.PlaybackSpeed = 4, "DeathNew"
+
+game.TextChatService.TextChannels.RBXSystem:DisplaySystemMessage("Ok, it's works now, you can finally open the door!")
+
+-- door new materials
+
+coroutine.wrap(function()
+
+if game:GetService("ReplicatedStorage").GameData.Floor.Value == "Hotel" then
+
+while true do
+
+    wait(0.0005)
+
+workspace.CurrentRooms[game.ReplicatedStorage.GameData.LatestRoom.Value]:FindFirstChild("Door"):FindFirstChild("Door").Material = "Brick"
+workspace.CurrentRooms[game.ReplicatedStorage.GameData.LatestRoom.Value]:FindFirstChild("Door"):FindFirstChild("Door"):FindFirstChild("Sign").Material = "Rock"
+
+    end
+
+elseif game:GetService("ReplicatedStorage").GameData.Floor.Value == "Mines" then
+
+--[[ new door material in the mines too ]]--
+
+while true do
+
+    wait(0.0005)
+
+workspace.CurrentRooms[game.ReplicatedStorage.GameData.LatestRoom.Value]:FindFirstChild("Door"):FindFirstChild("Door"):FindFirstChild("Sign").Material = "Rock"
+
+    end
+
+elseif game:GetService("ReplicatedStorage").GameData.Floor.Value == "Backdoor" then
+
+--[[ new door material in the backdoor too ]]--
+
+while true do
+
+    wait(0.0005)
+
+workspace.CurrentRooms[game.ReplicatedStorage.GameData.LatestRoom.Value]:FindFirstChild("Door"):FindFirstChild("Door").Material = "Rock"
+
+    end
+
+elseif game:GetService("ReplicatedStorage").GameData.Floor.Value == "Fools" then
+
+while true do
+
+    wait(0.0005)
+
+workspace.CurrentRooms[game.ReplicatedStorage.GameData.LatestRoom.Value]:FindFirstChild("Door"):FindFirstChild("Door").Material = "Brick"
+workspace.CurrentRooms[game.ReplicatedStorage.GameData.LatestRoom.Value]:FindFirstChild("Door"):FindFirstChild("Door"):FindFirstChild("Sign").Material = "Rock"
+
+    end
+
+--[[ ]]--
+
+end
+
+end)()
+
+--
+
+-- eyes nightmare in one room
+ 
+coroutine.wrap(function()
+ 
+game.ReplicatedStorage.GameData.LatestRoom.Changed:Connect(function()
+ 
+    wait(1)
+
+game.Players.LocalPlayer.PlayerGui.MainUI.Jumpscare.Jumpscare_Eyes.BackgroundColor3 = Color3.fromRGB(255, 0, 55)
+ 
+    if game.Workspace:FindFirstChild("Eyes") then
+ 
+game.Workspace.Eyes.Core.Attachment.EyesParticle.Color = ColorSequence.new({
+ 
+            ColorSequenceKeypoint.new(0, Color3.new(1, 0.305881, 0.305881)),
+ 
+            ColorSequenceKeypoint.new(0.305881, Color3.new(1, 0.305881, 0.305881)),
+ 
+            ColorSequenceKeypoint.new(0.305881, Color3.new(1, 0.305881, 0.305881)),
+ 
+            ColorSequenceKeypoint.new(1, Color3.new(1, 0.305881, 0.305881)),
+ 
+        })
+ 
+		--
+ 
+game.Workspace.Eyes.Core.Ambience.PlaybackSpeed = 0.9
+
+    end
+
+end)
+ 
+--
+
+if game:GetService("ReplicatedStorage").GameData.Floor.Value == "Fools" then
+
+game.ReplicatedStorage.GameData.LatestRoom.Changed:Connect(function()
+ 
+    wait(1)
+ 
+    if game.Workspace:FindFirstChild("Eyes") then
+ 
+game.Workspace.Eyes.Core.Attachment.EyesParticle.Color = ColorSequence.new({
+ 
+            ColorSequenceKeypoint.new(0, Color3.new(1, 0.305881, 0.305881)),
+ 
+            ColorSequenceKeypoint.new(0.305881, Color3.new(1, 0.305881, 0.305881)),
+ 
+            ColorSequenceKeypoint.new(0.305881, Color3.new(1, 0.305881, 0.305881)),
+ 
+            ColorSequenceKeypoint.new(1, Color3.new(1, 0.305881, 0.305881)),
+ 
+        })
+ 
+		--
+ 
+game.Workspace.Eyes.Core.Ambience.PlaybackSpeed = 0.9
+
+    end
+
+end)
+ 
+--
+
+--[[ ]]--
+
+end
+ 
+end)()
+ 
+--
+
+-- caption color for text
+
+print("Caption color for text coming soon")
+
+-- custom shop (for current candle model) [INCOMPATIBLE]
+
+loadstring(game:HttpGet("https://pastebin.com/raw/DQDWwAiM"))()
+
+print("WARNING: CUSTOM SHOP INCOMPATIBLE NOW, PRE-HOTEL+ WILL BE TO WORKS IN SHOPS")
