@@ -11,6 +11,8 @@ coroutine.wrap(function()
         wait(math.random(30,80))
         game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
         wait(5)
+	---====== Load spawner ======---
+
 local spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors/Entity%20Spawner/V2/Source.lua"))()
 
 ---====== Create entity ======---
@@ -131,60 +133,7 @@ end)
 ---====== Run entity ======---
 
 entity:Run()
-    end
-end)()
 
--- door new materials
-
-coroutine.wrap(function()
-
-if game:GetService("ReplicatedStorage").GameData.Floor.Value == "Hotel" then
-
-while true do
-
-    wait(0.0005)
-
-workspace.CurrentRooms[game.ReplicatedStorage.GameData.LatestRoom.Value]:FindFirstChild("Door"):FindFirstChild("Door").Material = "Brick"
-workspace.CurrentRooms[game.ReplicatedStorage.GameData.LatestRoom.Value]:FindFirstChild("Door"):FindFirstChild("Door"):FindFirstChild("Sign").Material = "Rock"
-
-    end
-
-elseif game:GetService("ReplicatedStorage").GameData.Floor.Value == "Mines" then
-
---[[ new door material in the mines too ]]--
-
-while true do
-
-    wait(0.0005)
-
-workspace.CurrentRooms[game.ReplicatedStorage.GameData.LatestRoom.Value]:FindFirstChild("Door"):FindFirstChild("Door"):FindFirstChild("Sign").Material = "Rock"
-
-    end
-
-elseif game:GetService("ReplicatedStorage").GameData.Floor.Value == "Backdoor" then
-
---[[ new door material in the backdoor too ]]--
-
-while true do
-
-    wait(0.0005)
-
-workspace.CurrentRooms[game.ReplicatedStorage.GameData.LatestRoom.Value]:FindFirstChild("Door"):FindFirstChild("Door").Material = "Rock"
-
-    end
-
-elseif game:GetService("ReplicatedStorage").GameData.Floor.Value == "Fools" then
-
-while true do
-
-    wait(0.0005)
-
-workspace.CurrentRooms[game.ReplicatedStorage.GameData.LatestRoom.Value]:FindFirstChild("Door"):FindFirstChild("Door").Material = "Brick"
-workspace.CurrentRooms[game.ReplicatedStorage.GameData.LatestRoom.Value]:FindFirstChild("Door"):FindFirstChild("Door"):FindFirstChild("Sign").Material = "Rock"
-
-    end
-
---[[ ]]--
 
 end
 
