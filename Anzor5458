@@ -134,7 +134,65 @@ entity:Run()
     end
 end)()
 
--- galena
+-- door new materials
+
+coroutine.wrap(function()
+
+if game:GetService("ReplicatedStorage").GameData.Floor.Value == "Hotel" then
+
+while true do
+
+    wait(0.0005)
+
+workspace.CurrentRooms[game.ReplicatedStorage.GameData.LatestRoom.Value]:FindFirstChild("Door"):FindFirstChild("Door").Material = "Brick"
+workspace.CurrentRooms[game.ReplicatedStorage.GameData.LatestRoom.Value]:FindFirstChild("Door"):FindFirstChild("Door"):FindFirstChild("Sign").Material = "Rock"
+
+    end
+
+elseif game:GetService("ReplicatedStorage").GameData.Floor.Value == "Mines" then
+
+--[[ new door material in the mines too ]]--
+
+while true do
+
+    wait(0.0005)
+
+workspace.CurrentRooms[game.ReplicatedStorage.GameData.LatestRoom.Value]:FindFirstChild("Door"):FindFirstChild("Door"):FindFirstChild("Sign").Material = "Rock"
+
+    end
+
+elseif game:GetService("ReplicatedStorage").GameData.Floor.Value == "Backdoor" then
+
+--[[ new door material in the backdoor too ]]--
+
+while true do
+
+    wait(0.0005)
+
+workspace.CurrentRooms[game.ReplicatedStorage.GameData.LatestRoom.Value]:FindFirstChild("Door"):FindFirstChild("Door").Material = "Rock"
+
+    end
+
+elseif game:GetService("ReplicatedStorage").GameData.Floor.Value == "Fools" then
+
+while true do
+
+    wait(0.0005)
+
+workspace.CurrentRooms[game.ReplicatedStorage.GameData.LatestRoom.Value]:FindFirstChild("Door"):FindFirstChild("Door").Material = "Brick"
+workspace.CurrentRooms[game.ReplicatedStorage.GameData.LatestRoom.Value]:FindFirstChild("Door"):FindFirstChild("Door"):FindFirstChild("Sign").Material = "Rock"
+
+    end
+
+--[[ ]]--
+
+end
+
+end)()
+
+--
+
+-- a-120
 
 coroutine.wrap(function()
  
@@ -142,24 +200,9 @@ game.ReplicatedStorage.GameData.LatestRoom.Changed:Connect(function()
  
 if game.ReplicatedStorage.GameData.LatestRoom.Value == 60 then
 
-game.Lighting.MainColorCorrection.TintColor = Color3.fromRGB(190, 0, 0)
-game.Lighting.MainColorCorrection.Contrast = 0.3
-local tween = game:GetService("TweenService")
-tween:Create(game.Lighting.MainColorCorrection, TweenInfo.new(10), {Contrast = 0}):Play()
-local TweenService = game:GetService("TweenService")
-local TW = TweenService:Create(game.Lighting.MainColorCorrection, TweenInfo.new(12),{TintColor = Color3.fromRGB(255, 255, 255)})
-TW:Play()
-local CameraShaker = require(game.ReplicatedStorage.CameraShaker)
-local camara = game.Workspace.CurrentCamera
-local camShake = CameraShaker.new(Enum.RenderPriority.Camera.Value, function(shakeCf)
-	camara.CFrame = camara.CFrame * shakeCf
-end)
-camShake:Start()
-camShake:ShakeOnce(4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4)
-
 local Overseer = Instance.new("Model")
 Overseer.Parent = workspace
-Overseer.Name = "galena"
+Overseer.Name = "Overseer"
 local v = game.Players.LocalPlayer
 local enableDamage = true
 local no = false
@@ -183,7 +226,7 @@ local camShake = CameraShaker.new(Enum.RenderPriority.Camera.Value, function(sha
 end)
  
 local currentLoadedRoom=workspace.CurrentRooms[game:GetService("ReplicatedStorage").GameData.LatestRoom.Value]
-local eyes=game:GetObjects("https://github.com/Anzor5458/Galens/raw/refs/heads/main/Galena.rbxm)[1]
+local eyes=game:GetObjects("https://github.com/Anzor5458/Galens/raw/refs/heads/main/Galena.rbxm")[1]
  
 if eyes then end
 game.Workspace.CurrentRooms.ChildAdded:Connect(function()
@@ -246,22 +289,6 @@ end)
 end)()
 
 --
-
--- release screech
-
-game.ReplicatedStorage.Entities.Screech.Top.Eyes.Color = Color3.fromRGB(255, 255, 0)
-game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game.RemoteListener.Modules.Screech.Caught.SoundId = "rbxassetid://7492033495"
-game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game.RemoteListener.Modules.Screech.Caught.PlaybackSpeed = 1.6
-game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game.RemoteListener.Modules.Screech.Attack.SoundId = "rbxassetid://8080941676"
-
-if game:GetService("ReplicatedStorage").GameData.Floor.Value == "Fools" then
-
-game.ReplicatedStorage.Entities.Screech.Top.Eyes.Color = Color3.fromRGB(255, 255, 0)
-game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game.RemoteListener.Modules.Screech.Attack.SoundId = "rbxassetid://8080941676"
-
---[[ ]]--
-
-end
 
 -- horror sound (playing for games)
 
@@ -358,93 +385,21 @@ end)()
 
 --
 
--- custom door sounds
+-- release screech
 
-loadstring(game:HttpGet("https://pastebin.com/raw/gxKdB7VD"))()
+game.ReplicatedStorage.Entities.Screech.Top.Eyes.Color = Color3.fromRGB(255, 255, 0)
+game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game.RemoteListener.Modules.Screech.Caught.SoundId = "rbxassetid://7492033495"
+game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game.RemoteListener.Modules.Screech.Caught.PlaybackSpeed = 1.6
+game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game.RemoteListener.Modules.Screech.Attack.SoundId = "rbxassetid://8080941676"
 
-game.ReplicatedStorage.GameData.LatestRoom.Changed:Wait()
+if game:GetService("ReplicatedStorage").GameData.Floor.Value == "Fools" then
 
-require(game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game).caption("Script sync'd according started room, have fun!",true)
-
-game.TextChatService.TextChannels.RBXSystem:DisplaySystemMessage("Forgotten Mode has been updated (version v2.5)")
-
--- timothy new jumpscare sound
-
-game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game.RemoteListener.Modules.SpiderJumpscare.Scare.SoundId = "rbxassetid://8080941676"
-
--- hide monster release scare
-
-game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game.RemoteListener.Modules.HideMonster.Scare.SoundId = "rbxassetid://9126213741"
-
--- goofy darkness
-
-game.Workspace.Ambience_Dark.SoundId = "rbxassetid://6535784827"
-game.Workspace.Ambience_Dark.PlaybackSpeed = 1
-
--- WOW
-
-game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game.Health.Death.SoundId = "rbxassetid://16929745437", "DeathNew"
-game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game.Health.Death.PlaybackSpeed = 4, "DeathNew"
-
-game.TextChatService.TextChannels.RBXSystem:DisplaySystemMessage("Ok, it's works now, you can finally open the door!")
-
--- door new materials
-
-coroutine.wrap(function()
-
-if game:GetService("ReplicatedStorage").GameData.Floor.Value == "Hotel" then
-
-while true do
-
-    wait(0.0005)
-
-workspace.CurrentRooms[game.ReplicatedStorage.GameData.LatestRoom.Value]:FindFirstChild("Door"):FindFirstChild("Door").Material = "Brick"
-workspace.CurrentRooms[game.ReplicatedStorage.GameData.LatestRoom.Value]:FindFirstChild("Door"):FindFirstChild("Door"):FindFirstChild("Sign").Material = "Rock"
-
-    end
-
-elseif game:GetService("ReplicatedStorage").GameData.Floor.Value == "Mines" then
-
---[[ new door material in the mines too ]]--
-
-while true do
-
-    wait(0.0005)
-
-workspace.CurrentRooms[game.ReplicatedStorage.GameData.LatestRoom.Value]:FindFirstChild("Door"):FindFirstChild("Door"):FindFirstChild("Sign").Material = "Rock"
-
-    end
-
-elseif game:GetService("ReplicatedStorage").GameData.Floor.Value == "Backdoor" then
-
---[[ new door material in the backdoor too ]]--
-
-while true do
-
-    wait(0.0005)
-
-workspace.CurrentRooms[game.ReplicatedStorage.GameData.LatestRoom.Value]:FindFirstChild("Door"):FindFirstChild("Door").Material = "Rock"
-
-    end
-
-elseif game:GetService("ReplicatedStorage").GameData.Floor.Value == "Fools" then
-
-while true do
-
-    wait(0.0005)
-
-workspace.CurrentRooms[game.ReplicatedStorage.GameData.LatestRoom.Value]:FindFirstChild("Door"):FindFirstChild("Door").Material = "Brick"
-workspace.CurrentRooms[game.ReplicatedStorage.GameData.LatestRoom.Value]:FindFirstChild("Door"):FindFirstChild("Door"):FindFirstChild("Sign").Material = "Rock"
-
-    end
+game.ReplicatedStorage.Entities.Screech.Top.Eyes.Color = Color3.fromRGB(255, 255, 0)
+game.Players.LocalPlayer.PlayerGui.MainUI.Initiator.Main_Game.RemoteListener.Modules.Screech.Attack.SoundId = "rbxassetid://8080941676"
 
 --[[ ]]--
 
 end
-
-end)()
-
---
 
 -- eyes nightmare in one room
  
@@ -517,13 +472,3 @@ end
 end)()
  
 --
-
--- caption color for text
-
-print("Caption color for text coming soon")
-
--- custom shop (for current candle model) [INCOMPATIBLE]
-
-loadstring(game:HttpGet("https://pastebin.com/raw/DQDWwAiM"))()
-
-print("WARNING: CUSTOM SHOP INCOMPATIBLE NOW, PRE-HOTEL+ WILL BE TO WORKS IN SHOPS")
